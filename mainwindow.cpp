@@ -1,9 +1,16 @@
 #include "mainwindow.h"
+#include "Mydatabase.h"
+#include "Account.h"
+#include "Date.h"
+#include "Schedule.h"
 #include "ui_mainwindow.h"
 
 #include <QVBoxLayout>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    MyDatabase *db = MyDatabase::getInstance();
+    db->createConn();
+    db->createScheduleTable();
+    db->destroyConn();
 
 }
 

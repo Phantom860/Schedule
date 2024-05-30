@@ -1,0 +1,13 @@
+release/mydatabase.o
+release/todo.o
+release/todolist.o
+release/Account.o
+release/Base.o
+release/Date.o
+release/Mydatabase.o
+release/Schedule.o
+release/main.o
+release/mainwindow.o
+release/moc_todo.o
+release/moc_todolist.o
+release/moc_mainwindow.o

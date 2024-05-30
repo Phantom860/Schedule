@@ -11,7 +11,7 @@ class Schedule
 {
 public:
     Schedule();
-    bool setData(Date startTime,Date endTime,QString item,QString important,QString category);
+    void setData(int id,Date startTime,Date endTime,QString item,QString important,QString category);
 
 
     Date getStartTime() const;
@@ -31,7 +31,11 @@ public:
 
 
 
+    int getId() const;
+    void setId(int newId);
+
 private:
+    int id;
     Date startTime;
     Date endTime;
     QString item;

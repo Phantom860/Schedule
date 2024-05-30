@@ -6,13 +6,16 @@
 #include "Date.h"
 #include "Schedule.h"
 
+#include <vector>
+using namespace std;
+
 class Account : public Base
 {
 public:
     Account();
     ~Account();
 
-    virtual vector<Schedule> selectSchedule() override;
+    virtual void selectSchedule(QList<Schedule> &SToDo) override;
     virtual void addSchedule(Schedule &ToDo) override;
     virtual void deleteSchedule(Schedule &ToDo) override;
     virtual void updateSchedule(Schedule &ToDo) override;

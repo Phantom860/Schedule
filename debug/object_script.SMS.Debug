@@ -1,0 +1,13 @@
+debug/mydatabase.o
+debug/todo.o
+debug/todolist.o
+debug/Account.o
+debug/Base.o
+debug/Date.o
+debug/Mydatabase.o
+debug/Schedule.o
+debug/main.o
+debug/mainwindow.o
+debug/moc_todo.o
+debug/moc_todolist.o
+debug/moc_mainwindow.o

@@ -7,7 +7,16 @@
 Schedule::Schedule()
 {
 
+}
 
+void Schedule::setData(int m_id,Date m_startTime, Date m_endTime, QString m_item, QString m_important, QString m_category)
+{
+    id = m_id;
+    startTime = m_startTime;
+    endTime = m_endTime;
+    item = m_item;
+    important = m_important;
+    category = m_category;
 }
 
 Date Schedule::getStartTime() const
@@ -58,6 +67,16 @@ QString Schedule::getCategory() const
 void Schedule::setCategory(const QString &newCategory)
 {
     category = newCategory;
+}
+
+int Schedule::getId() const
+{
+    return id;
+}
+
+void Schedule::setId(int newId)
+{
+    id = newId;
 }
 
 

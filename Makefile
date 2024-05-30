@@ -191,7 +191,6 @@ Makefile: SMS.pro C:/Qt3/6.5.3/mingw_64/mkspecs/win32-g++/qmake.conf C:/Qt3/6.5.
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/qt_config.prf \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/win32-g++/qmake.conf \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/exclusive_builds.prf \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/toolchain.prf \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/default_pre.prf \
@@ -222,6 +221,7 @@ Makefile: SMS.pro C:/Qt3/6.5.3/mingw_64/mkspecs/win32-g++/qmake.conf C:/Qt3/6.5.
 		C:/Qt3/6.5.3/mingw_64/lib/Qt6Sql.prl \
 		C:/Qt3/6.5.3/mingw_64/lib/Qt6Core.prl \
 		C:/Qt3/6.5.3/mingw_64/lib/Qt6EntryPoint.prl \
+		.qmake.stash \
 		C:/Qt3/6.5.3/mingw_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile SMS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/spec_pre.prf:
@@ -345,7 +345,6 @@ C:/Qt3/6.5.3/mingw_64/mkspecs/features/qt_functions.prf:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/qt_config.prf:
 C:/Qt3/6.5.3/mingw_64/mkspecs/win32-g++/qmake.conf:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/exclusive_builds.prf:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/toolchain.prf:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/default_pre.prf:
@@ -376,6 +375,7 @@ C:/Qt3/6.5.3/mingw_64/lib/Qt6Gui.prl:
 C:/Qt3/6.5.3/mingw_64/lib/Qt6Sql.prl:
 C:/Qt3/6.5.3/mingw_64/lib/Qt6Core.prl:
 C:/Qt3/6.5.3/mingw_64/lib/Qt6EntryPoint.prl:
+.qmake.stash:
 C:/Qt3/6.5.3/mingw_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile SMS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
