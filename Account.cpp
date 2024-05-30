@@ -3,7 +3,7 @@
 #include "Mydatabase.h"
 
 #include <QSqlDatabase>
-#include <QVariant>
+
 #include <QDebug>
 #include <QSqlQuery>
 
@@ -45,7 +45,7 @@ void Account::selectSchedule(QList<Schedule> &ToDo)
         QString item = query.value("item").toString();
         QString important = query.value("important").toString();
         QString category = query.value("category").toString();
-        sch.setData(id,startTime,endTime,item,important,category);
+        sch.setData(id,start_year,start_month,start_day,start_hour,start_minute,end_year,end_month,end_day,end_hour,end_minute,item,important,category);
         ToDo.append(sch);
     }
     db->destroyConn();
@@ -62,16 +62,17 @@ void Account::addSchedule(Schedule &ToDo)
     query.prepare("insert into tb_ToDo(id,start_year, start_month, start_day, start_hour, start_minute, "
                   "end_year, end_month, end_day, end_hour, end_minute,item,important,category),"
                   "values(:startTime,:endTime,:item,:important,:category);");
-    query.bindValue(":start_year",ToDo.getStartTime().getYear());
-    query.bindValue(":start_month",ToDo.getStartTime().getMonth());
-    query.bindValue(":start_day",ToDo.getStartTime().getDay());
-    query.bindValue(":start_hour",ToDo.getStartTime().getHour());
-    query.bindValue(":start_minute",ToDo.getStartTime().getMinute());
-    query.bindValue(":end_year",ToDo.getEndTime().getYear());
-    query.bindValue(":end_month",ToDo.getEndTime().getMonth());
-    query.bindValue(":end_day",ToDo.getEndTime().getDay());
-    query.bindValue(":end_hour",ToDo.getEndTime().getHour());
-    query.bindValue(":end_minute",ToDo.getEndTime().getMinute());
+    query.bindValue(":id",ToDo.getId());
+    query.bindValue(":start_year",ToDo.getStart_year());
+    query.bindValue(":start_month",ToDo.getStart_month());
+    query.bindValue(":start_day",ToDo.getStart_day());
+    query.bindValue(":start_hour",ToDo.getStart_hour());
+    query.bindValue(":start_minute",ToDo.getStart_minute());
+    query.bindValue(":end_year",ToDo.getEnd_year());
+    query.bindValue(":end_month",ToDo.getEnd_month());
+    query.bindValue(":end_day",ToDo.getEnd_day());
+    query.bindValue(":end_hour",ToDo.getEnd_hour());
+    query.bindValue(":end_minute",ToDo.getEnd_minute());
     query.bindValue(":item",ToDo.getItem());
     query.bindValue(":category",ToDo.getCategory());
     query.bindValue(":important",ToDo.getImportant());
@@ -79,14 +80,50 @@ void Account::addSchedule(Schedule &ToDo)
     db->destroyConn();
 }
 
-void Account::deleteSchedule(Schedule &ToDo)
+void Account::deleteSchedule(int id)
 {
+    MyDatabase *db = MyDatabase::getInstance();
+    db->createConn();
+    QSqlQuery query;
+    QString sql = QString("delete from tb_ToDo where id = %1").arg(id);
+    if(!query.exec(sql))
+    {
+        qDebug() << "Failed to delete id!!!";
+        db->destroyConn();
 
+    }
+
+    db->destroyConn();
 }
 
 void Account::updateSchedule(Schedule &ToDo)
 {
-
+    MyDatabase *db = MyDatabase::getInstance();
+    db->createConn();
+    QSqlQuery query;
+    query.prepare("update tb_ToDo set start_year=:start_year,start_month=:start_month,start_day=:start_day,start_hour=:start_hour,start_minute=:start_minute,"
+                  "end_year=:end_year,end_month=:end_month,end_day=:end_day,end_hour=:end_hour,end_minute=:end_minute,"
+                  "item=:item,important=:important,category=:category where id=:id");
+    query.bindValue(":id",ToDo.getId());
+    query.bindValue(":start_year",ToDo.getStart_year());
+    query.bindValue(":start_month",ToDo.getStart_month());
+    query.bindValue(":start_day",ToDo.getStart_day());
+    query.bindValue(":start_hour",ToDo.getStart_hour());
+    query.bindValue(":start_minute",ToDo.getStart_minute());
+    query.bindValue(":end_year",ToDo.getEnd_year());
+    query.bindValue(":end_month",ToDo.getEnd_month());
+    query.bindValue(":end_day",ToDo.getEnd_day());
+    query.bindValue(":end_hour",ToDo.getEnd_hour());
+    query.bindValue(":end_minute",ToDo.getEnd_minute());
+    query.bindValue(":item",ToDo.getItem());
+    query.bindValue(":important",ToDo.getImportant());
+    query.bindValue(":category",ToDo.getCategory());
+    if(!query.exec())
+    {
+        qDebug() << query.lastQuery();
+        db->destroyConn();
+    }
+    db->destroyConn();
 }
 
 
